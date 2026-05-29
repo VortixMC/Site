@@ -95,6 +95,10 @@ export async function parsePagePlaceholders() {
   if (!document.body.textContent.includes("{{")) return;
 
   await warmCache();
+  const status = _cache.data;
+
+  // Update status indicator and visibility of player/version boxes
+  updateStatusDisplay(status);
 
   const walker = document.createTreeWalker(
     document.body,
@@ -112,6 +116,26 @@ export async function parsePagePlaceholders() {
 
   for (const node of nodes) {
     node.nodeValue = await parsePlaceholders(node.nodeValue);
+  }
+}
+
+function updateStatusDisplay(status) {
+  const statusIndicator = document.getElementById("status-indicator");
+  const playersBox = document.querySelector(".status-players");
+  const versionBox = document.querySelector(".status-version");
+
+  if (statusIndicator) {
+    if (status.online) {
+      statusIndicator.innerHTML =
+        '<small>Status</small><strong><span class="dot-green">●</span> Online</strong>';
+      if (playersBox) playersBox.style.display = "block";
+      if (versionBox) versionBox.style.display = "block";
+    } else {
+      statusIndicator.innerHTML =
+        '<small>Status</small><strong><span class="dot-red">●</span> Offline</strong>';
+      if (playersBox) playersBox.style.display = "none";
+      if (versionBox) versionBox.style.display = "none";
+    }
   }
 }
 

@@ -45,11 +45,11 @@
           <a class="btn btn-ghost" href="https://discord.gg/4x4WhCFWKP" target="_blank">Discord</a>
         </div>
         <div class="status-row">
-          <div class="status-cell">
+          <div class="status-cell" id="status-indicator">
             <small>Status</small>
             <strong><span class="dot-green">●</span> Online</strong>
           </div>
-          <div class="status-cell">
+          <div class="status-cell status-players" style="display:none">
             <small>Players</small>
             <strong>{{player_count}} / {{max_players}}</strong>
           </div>
@@ -57,7 +57,7 @@
             <small>Season</small>
             <strong>2</strong>
           </div>
-          <div class="status-cell">
+          <div class="status-cell status-version" style="display:none">
             <small>Version</small>
             <strong>{{server_version}}</strong>
           </div>
