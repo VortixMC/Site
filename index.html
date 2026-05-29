@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/assets/css/style.css">
+    <script type="module" src="/assets/js/placeholder-parser.js"></script>
+    <script type="module">
+      import mc from "/assets/js/placeholder-parser.js";
+      document.addEventListener("DOMContentLoaded", () => mc.parsePagePlaceholders());
+    </script>
     <title>ValoricMC</title>
   </head>
   <body>
@@ -12,7 +17,7 @@
 
     <nav>
       <div class="nav-logo">
-        <img src="logo.png" alt="ValoricMC"
+        <img src="/assets/image/logo.png" alt="ValoricMC"
           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
         <span class="nav-logo-fallback" style="display:none">ValoricMC</span>
       </div>
@@ -27,7 +32,7 @@
     <section class="hero">
 
       <div class="hero-bg">
-        <img src="bg.png" alt=""
+        <img src="/assets/image/bg.png" alt=""
           onerror="this.style.display='none'">
       </div>
 
@@ -150,7 +155,7 @@
 
     <footer>
       <div class="f-logo">
-        <img src="logo.png" alt="ValoricMC"
+        <img src="/assets/image/logo.png" alt="ValoricMC"
           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
         <span class="f-logo-fallback" style="display:none">ValoricMC</span>
       </div>
