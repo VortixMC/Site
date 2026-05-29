@@ -1,14 +1,13 @@
-/**
- * Placeholders:
- *   {{player_count}}   - Online player count
- *   {{max_players}}    - Max player slots
- *   {{server_name}}    - Server software brand (e.g. Paper 1.21.4)
- *   {{server_version}} - Game version (e.g. 1.21.4)
- *   {{motd}}           - Message of the Day (plain text)
- *   {{player_list}}    - Comma-separated list of online players
- *
- * Data is fetched from the mcsrvstat.us public API
- */
+/*
+Placeholders:
+  {{player_count}}   - Online player count
+  {{max_players}}    - Max player slots
+  {{server_name}}    - Server software brand (e.g. Paper 1.21.4)
+  {{server_version}} - Game version (e.g. 1.21.4)
+  {{motd}}           - Message of the Day (plain text)
+  {{player_list}}    - Comma-separated list of online players
+Data is fetched from the mcsrvstat.us public API
+*/
 
 const MC_SERVER = "play.valoricmc.net";
 const CACHE_TTL_MS = 30_000;
@@ -16,11 +15,6 @@ const PLACEHOLDER_RE = /\{\{(\w+)\}\}/g;
 
 let _cache = null;
 let _pendingFetch = null;
-let _serverOverride = null;
-
-function getServer() {
-  return _serverOverride ?? MC_SERVER;
-}
 
 async function fetchServerStatus() {
   if (_cache && Date.now() - _cache.fetchedAt < CACHE_TTL_MS)
@@ -28,12 +22,10 @@ async function fetchServerStatus() {
   if (_pendingFetch) return _pendingFetch;
 
   _pendingFetch = (async () => {
-    const url = `https://api.mcsrvstat.us/3/${encodeURIComponent(getServer())}`;
+    const url = `https://api.mcsrvstat.us/3/${encodeURIComponent(MC_SERVER)}`;
     const res = await fetch(url);
     if (!res.ok) throw new Error(`mcsrvstat.us returned ${res.status}`);
     const raw = await res.json();
-
-    /** @type {McServerStatus} */
     const status = normalise(raw);
     _cache = { data: status, fetchedAt: Date.now() };
     _pendingFetch = null;
@@ -83,12 +75,6 @@ export function parsePlaceholdersSync(text) {
 
 export async function warmCache() {
   return fetchServerStatus();
-}
-
-export function setServer(serverAddress) {
-  _serverOverride = serverAddress;
-  _cache = null;
-  _pendingFetch = null;
 }
 
 export async function parsePagePlaceholders() {
@@ -165,7 +151,6 @@ export default {
   parsePlaceholdersSync,
   parsePagePlaceholders,
   warmCache,
-  setServer,
   getCache: () =>
     _cache
       ? { ..._cache.data, _fetchedAt: new Date(_cache.fetchedAt).toISOString() }
