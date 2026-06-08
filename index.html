@@ -17,9 +17,9 @@
 
     <nav>
       <div class="nav-logo">
-        <img src="/assets/image/logo.png" alt="ValoricMC"
+        <img src="/assets/image/logo.png" alt="VortixMC"
           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-        <span class="nav-logo-fallback" style="display:none">ValoricMC</span>
+        <span class="nav-logo-fallback" style="display:none">VortixMC</span>
       </div>
       <ul class="nav-links">
         <li><a href="#features">Features</a></li>
@@ -98,7 +98,7 @@
           <div>
             <span class="tl-chip chip-done">Complete</span>
             <h4>The Foundation</h4>
-            <p>Where ValoricMC started. Classic survival, community building, and the first wars.</p>
+            <p>Where VortixMC started. Classic survival, community building, and the first wars.</p>
           </div>
         </div>
         <div class="tl live">
@@ -125,7 +125,7 @@
       <h2 class="section-title">FAQ</h2>
       <div class="faq">
         <div class="faq-item">
-          <h3>Is ValoricMC crossplay?</h3>
+          <h3>Is Vortix crossplay?</h3>
           <p>Yes. Java and Bedrock are both supported.</p>
         </div>
         <div class="faq-item">
@@ -146,7 +146,7 @@
     <section class="join-wrap reveal" id="join">
       <h2>Ready to join?</h2>
       <p>Season 2 is live. Season 3 is around the corner.<br>Get in before the next reset.</p>
-      <div><div class="ip-block">play.valoricmc.net</div></div>
+      <div><div class="ip-block">play.vortixmc.xyz</div></div>
       <div class="btn-row">
         <button class="btn btn-primary" onclick="copyIP()">Copy IP</button>
         <a class="btn btn-ghost" href="https://discord.gg/4x4WhCFWKP" target="_blank">Discord</a>
@@ -155,22 +155,22 @@
 
     <footer>
       <div class="f-logo">
-        <img src="/assets/image/logo.png" alt="ValoricMC"
+        <img src="/assets/image/logo.png" alt="VortixMC"
           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-        <span class="f-logo-fallback" style="display:none">ValoricMC</span>
+        <span class="f-logo-fallback" style="display:none">VortixMC</span>
       </div>
-      <p>ValoricMC is running on {{server_name}}</p>
+      <p>Vortix is running on {{server_name}}</p>
       <p>Season 2 Live &nbsp;·&nbsp; Season 3 Coming Soon</p>
-      <p>© 2026 ValoricMC. This work is licensed under CC-BY 4.0.</p>
+      <p>© VortixMC 2026</p>
     </footer>
 
     <script>
       function copyIP() {
-        navigator.clipboard.writeText("play.valoricmc.net").then(() => {
+        navigator.clipboard.writeText("play.vortixmc.xyz").then(() => {
           const t = document.getElementById("toast");
           t.classList.add("show");
           setTimeout(() => t.classList.remove("show"), 2000);
-        }).catch(() => alert("play.valoricmc.net"));
+        }).catch(() => alert("play.vortixmc.xyz"));
       }
 
       const obs = new IntersectionObserver(entries => {
